@@ -6,6 +6,10 @@
   tclhs crt_pblock.tcl
   cp PBLOCK.xdc xdc
 ```
+4. launch vivado with comd
+```
+  vivado -source crt_proj_gen4x4.tcl
+```
 
 configuratiions
 1. disable or enable pblock

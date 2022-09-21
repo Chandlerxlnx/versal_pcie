@@ -193,21 +193,21 @@ set obj [get_filesets constrs_1]
 
 # Add/Import constrs file and set constrs file properties
 set file "[file normalize "$origin_dir/xdc/pcie_pin.xdc"]"
-set file_imported [import_files -fileset constrs_1 [list $file]]
+set file_imported [add_files -fileset constrs_1 [list $file]]
 set file "pcie_pin.xdc"
 set file_obj [get_files -of_objects [get_filesets constrs_1] [list "*$file"]]
 set_property -name "file_type" -value "XDC" -objects $file_obj
 
 # Add/Import constrs file and set constrs file properties
 set file "[file normalize "$origin_dir/xdc/synth.xdc"]"
-set file_imported [import_files -fileset constrs_1 [list $file]]
+set file_imported [add_files -fileset constrs_1 [list $file]]
 set file "synth.xdc"
 set file_obj [get_files -of_objects [get_filesets constrs_1] [list "*$file"]]
 set_property -name "file_type" -value "XDC" -objects $file_obj
 
 # Add/Import constrs file and set constrs file properties
 set file "[file normalize "$origin_dir/xdc/PBLOCK.xdc"]"
-set file_imported [import_files -fileset constrs_1 [list $file]]
+set file_imported [add_files -fileset constrs_1 [list $file]]
 set file "PBLOCK.xdc"
 set file_obj [get_files -of_objects [get_filesets constrs_1] [list "*$file"]]
 set_property -name "file_type" -value "XDC" -objects $file_obj
@@ -1831,4 +1831,4 @@ move_dashboard_gadget -name {utilization_2} -row 1 -col 1
 move_dashboard_gadget -name {methodology_1} -row 2 -col 1
 
 launch_runs -jobs 24 [get_runs]
-wait_on_runs [get_runs] -exit_condition ALL
+#wait_on_runs [get_runs] -exit_condition ALL
