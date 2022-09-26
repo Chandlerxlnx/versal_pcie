@@ -376,4 +376,4 @@
   #remove_cells_from_pbock $pblock_name [get_cells -hier -regexp {.*rxelecidle.*}]
   #remove_cells_from_pbock $pblock_name [get_cells -hier -regexp {.*RXTERM.*}]
    
-set_property IS_SOFT 0 [get_pblocks] 
+set_property IS_SOFT 1 [get_pblocks] 
