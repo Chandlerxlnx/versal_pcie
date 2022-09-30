@@ -1,6 +1,17 @@
 #procedure
 1. modify the crt_proj_gen4x4.tcl to define pipe line stage
+```c
+  set_property -dict [list \
+   ...
+   CONFIG.pipeline_stages {6} \
+   ...
+   ] $pcie_phy
+
+```
 2. modify the crt_pblock.tcl to define the pipe line stage
+```C
+
+```
 3. run comd
 ```
   tclhs crt_pblock.tcl

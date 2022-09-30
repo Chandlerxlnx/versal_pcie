@@ -399,6 +399,7 @@ refclk_PROT0_R0_100_MHz_unique1} \
  ] $gt_quad_0
 
   # Create instance: pcie_phy, and set properties
+  # DEBUG, Chandler,change CONFIG.pipline_stages to suitable number
   set pcie_phy [ create_bd_cell -type ip -vlnv xilinx.com:ip:pcie_phy_versal:1.0 pcie_phy ]
   set_property -dict [ list \
    CONFIG.PL_LINK_CAP_MAX_LINK_SPEED {16.0_GT/s} \
