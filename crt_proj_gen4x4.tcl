@@ -139,7 +139,6 @@ set proj_dir [get_property directory [current_project]]
 
 # Set project properties
 set obj [current_project]
-set_property -name "board_part_repo_paths" -value "[file normalize "$origin_dir/../../alveo_board"] [file normalize "$origin_dir/../../git_hub/U25N/U25N_fpga/U25_BOARD_FILES"] [file normalize "$origin_dir/../../git_hub/U25N/U25N_fpga/U25_BOARD_FILES/au25"]" -objects $obj
 set_property -name "corecontainer.enable" -value "1" -objects $obj
 set_property -name "default_lib" -value "xil_defaultlib" -objects $obj
 set_property -name "enable_core_container" -value "1" -objects $obj
@@ -269,12 +268,12 @@ proc cr_bd_design_1 { parentCell } {
   set bCheckIPs 1
   if { $bCheckIPs == 1 } {
      set list_check_ips "\ 
-  xilinx.com:ip:pcie_versal:1.0\
-  xilinx.com:ip:versal_cips:3.2\
-  xilinx.com:ip:util_ds_buf:2.2\
-  xilinx.com:ip:xlconstant:1.1\
-  xilinx.com:ip:gt_quad_base:1.1\
-  xilinx.com:ip:pcie_phy_versal:1.0\
+  xilinx.com:ip:pcie_versal:*\
+  xilinx.com:ip:versal_cips:*\
+  xilinx.com:ip:util_ds_buf:*\
+  xilinx.com:ip:xlconstant:*\
+  xilinx.com:ip:gt_quad_base:*\
+  xilinx.com:ip:pcie_phy_versal:*\
   "
 
    set list_ips_missing ""
@@ -366,21 +365,21 @@ proc create_hier_cell_pcie_versal_0_support { parentCell nameHier } {
   create_bd_pin -dir I -type rst sys_reset
 
   # Create instance: bufg_gt_sysclk, and set properties
-  set bufg_gt_sysclk [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf:2.2 bufg_gt_sysclk ]
+  set bufg_gt_sysclk [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf bufg_gt_sysclk ]
   set_property -dict [ list \
    CONFIG.C_BUFG_GT_SYNC {true} \
    CONFIG.C_BUF_TYPE {BUFG_GT} \
  ] $bufg_gt_sysclk
 
   # Create instance: const_1b1, and set properties
-  set const_1b1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 const_1b1 ]
+  set const_1b1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant const_1b1 ]
   set_property -dict [ list \
    CONFIG.CONST_VAL {1} \
    CONFIG.CONST_WIDTH {1} \
  ] $const_1b1
 
   # Create instance: gt_quad_0, and set properties
-  set gt_quad_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:gt_quad_base:1.1 gt_quad_0 ]
+  set gt_quad_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:gt_quad_base gt_quad_0 ]
   set_property -dict [ list \
    CONFIG.PORTS_INFO_DICT {\
      LANE_SEL_DICT {PROT0 {RX0 RX1 RX2 RX3 TX0 TX1 TX2 TX3}}\
@@ -400,7 +399,7 @@ refclk_PROT0_R0_100_MHz_unique1} \
 
   # Create instance: pcie_phy, and set properties
   # DEBUG, Chandler,change CONFIG.pipline_stages to suitable number
-  set pcie_phy [ create_bd_cell -type ip -vlnv xilinx.com:ip:pcie_phy_versal:1.0 pcie_phy ]
+  set pcie_phy [ create_bd_cell -type ip -vlnv xilinx.com:ip:pcie_phy_versal pcie_phy ]
   set_property -dict [ list \
    CONFIG.PL_LINK_CAP_MAX_LINK_SPEED {16.0_GT/s} \
    CONFIG.PL_LINK_CAP_MAX_LINK_WIDTH {X4} \
@@ -422,7 +421,7 @@ refclk_PROT0_R0_100_MHz_unique1} \
  ] $pcie_phy
 
   # Create instance: refclk_ibuf, and set properties
-  set refclk_ibuf [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf:2.2 refclk_ibuf ]
+  set refclk_ibuf [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf refclk_ibuf ]
   set_property -dict [ list \
    CONFIG.C_BUF_TYPE {IBUFDSGTE} \
  ] $refclk_ibuf
@@ -522,7 +521,7 @@ refclk_PROT0_R0_100_MHz_unique1} \
   set sys_reset [ create_bd_port -dir I -type rst sys_reset ]
 
   # Create instance: pcie_versal_0, and set properties
-  set pcie_versal_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:pcie_versal:1.0 pcie_versal_0 ]
+  set pcie_versal_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:pcie_versal pcie_versal_0 ]
   set_property -dict [ list \
    CONFIG.AXISTEN_IF_EXT_512_RQ_STRADDLE {false} \
    CONFIG.AXISTEN_IF_RC_STRADDLE {true} \
@@ -595,7 +594,7 @@ refclk_PROT0_R0_100_MHz_unique1} \
   create_hier_cell_pcie_versal_0_support [current_bd_instance .] pcie_versal_0_support
 
   # Create instance: versal_cips_0, and set properties
-  set versal_cips_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:versal_cips:3.2 versal_cips_0 ]
+  set versal_cips_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:versal_cips versal_cips_0 ]
   set_property -dict [ list \
    CONFIG.BOOT_MODE {Custom} \
    CONFIG.DDR_MEMORY_MODE {Enable} \
