@@ -12,7 +12,7 @@ set stageN 6
 set list_pb_x [list 0 1 3 5 7 9]
 set list_pb_y [list 3]
 set Fxdc "PBLOCK.xdc"
-set SOFT_PBLOCK 0
+set SOFT_PBLOCK 1
 
 set fh [open $Fxdc w]
 for {set i_inst 0} {$i_inst < [llength $list_inst]} {incr i_inst} {
@@ -74,7 +74,7 @@ for {set i_inst 0} {$i_inst < [llength $list_inst]} {incr i_inst} {
 
   add_cells_to_pblock \[get_pblocks \$pblock_name\] \\
       \[get_cells -hier -regexp {.*$inst_pattern.*/gt_top_i/phy_pipeline/.*} \\
-      -filter {is_sequential &&NAME!\".*rx_margin.*payload_o_chain.*\" \\
+      -filter {is_sequential &&NAME!~\".*rx_margin.*payload_o_chain.*\" \\
            && NAME!~\".*rx_margin_req_cmd_o.*\"
            && NAME=~\".*rx_margin.*_o_chain.*ff_chain_reg\\\[$i_stage\\\].*\" }\]  
   

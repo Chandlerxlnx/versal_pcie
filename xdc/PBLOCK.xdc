@@ -49,7 +49,7 @@
 
   add_cells_to_pblock [get_pblocks $pblock_name] \
       [get_cells -hier -regexp {.*_0_support.*/gt_top_i/phy_pipeline/.*} \
-      -filter {is_sequential &&NAME!".*rx_margin.*payload_o_chain.*" \
+      -filter {is_sequential &&NAME!~".*rx_margin.*payload_o_chain.*" \
            && NAME!~".*rx_margin_req_cmd_o.*"
            && NAME=~".*rx_margin.*_o_chain.*ff_chain_reg\[1\].*" }]  
   
@@ -112,7 +112,7 @@
 
   add_cells_to_pblock [get_pblocks $pblock_name] \
       [get_cells -hier -regexp {.*_0_support.*/gt_top_i/phy_pipeline/.*} \
-      -filter {is_sequential &&NAME!".*rx_margin.*payload_o_chain.*" \
+      -filter {is_sequential &&NAME!~".*rx_margin.*payload_o_chain.*" \
            && NAME!~".*rx_margin_req_cmd_o.*"
            && NAME=~".*rx_margin.*_o_chain.*ff_chain_reg\[2\].*" }]  
   
@@ -175,7 +175,7 @@
 
   add_cells_to_pblock [get_pblocks $pblock_name] \
       [get_cells -hier -regexp {.*_0_support.*/gt_top_i/phy_pipeline/.*} \
-      -filter {is_sequential &&NAME!".*rx_margin.*payload_o_chain.*" \
+      -filter {is_sequential &&NAME!~".*rx_margin.*payload_o_chain.*" \
            && NAME!~".*rx_margin_req_cmd_o.*"
            && NAME=~".*rx_margin.*_o_chain.*ff_chain_reg\[3\].*" }]  
   
@@ -238,7 +238,7 @@
 
   add_cells_to_pblock [get_pblocks $pblock_name] \
       [get_cells -hier -regexp {.*_0_support.*/gt_top_i/phy_pipeline/.*} \
-      -filter {is_sequential &&NAME!".*rx_margin.*payload_o_chain.*" \
+      -filter {is_sequential &&NAME!~".*rx_margin.*payload_o_chain.*" \
            && NAME!~".*rx_margin_req_cmd_o.*"
            && NAME=~".*rx_margin.*_o_chain.*ff_chain_reg\[4\].*" }]  
   
@@ -301,7 +301,7 @@
 
   add_cells_to_pblock [get_pblocks $pblock_name] \
       [get_cells -hier -regexp {.*_0_support.*/gt_top_i/phy_pipeline/.*} \
-      -filter {is_sequential &&NAME!".*rx_margin.*payload_o_chain.*" \
+      -filter {is_sequential &&NAME!~".*rx_margin.*payload_o_chain.*" \
            && NAME!~".*rx_margin_req_cmd_o.*"
            && NAME=~".*rx_margin.*_o_chain.*ff_chain_reg\[5\].*" }]  
   
@@ -364,7 +364,7 @@
 
   add_cells_to_pblock [get_pblocks $pblock_name] \
       [get_cells -hier -regexp {.*_0_support.*/gt_top_i/phy_pipeline/.*} \
-      -filter {is_sequential &&NAME!".*rx_margin.*payload_o_chain.*" \
+      -filter {is_sequential &&NAME!~".*rx_margin.*payload_o_chain.*" \
            && NAME!~".*rx_margin_req_cmd_o.*"
            && NAME=~".*rx_margin.*_o_chain.*ff_chain_reg\[6\].*" }]  
   
